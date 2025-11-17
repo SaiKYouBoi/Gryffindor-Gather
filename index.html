@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div class="fixed top-0 left-0 w-screen h-screen bg-[rgba(20,20,20,0.90)] z-999">
+        <div class="fixed top-0 left-0 w-screen h-screen bg-[rgba(20,20,20,0.90)] z-999 hidden" id="addemployeemodal">
             <div
                 class="modal w-[30%] h-[95%] bg-white rounded-[10px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 py-6 overflow-hidden flex flex-col">
                 <div class="overflow-auto p-6 py-4 pt-0 flex-1 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-gray-400
@@ -82,14 +82,15 @@
                             </div>
                             <textarea class="border-gray-300 rounded-md mt-2.5 border-2 w-full py-2 px-3" rows="2"
                                 name="Description" id="Description" placeholder="Description"></textarea>
-                            <button
-                                class="bg-blue-400 hover:bg-blue-500 text-white w-full mt-2.5 rounded-[5px] p-2" id="addexperience">Add
+                            
+                        </div>
+                        </div>
+                        <button type="button"
+                                class="addexperience bg-blue-400 hover:bg-blue-500 text-white w-full mt-2.5 rounded-[5px] p-2">Add
                                 Another Experience</button>
-                        </div>
-                        </div>
                         <div class="flex gap-5 mt-5">
                             <button
-                                class="bg-red-400 hover:bg-red-500 text-white w-full mt-2.5 rounded-[5px] p-2">
+                                class="bg-red-400 hover:bg-red-500 text-white w-full mt-2.5 rounded-[5px] p-2" id="cancel">
                                 Cancel</button>
                             <button
                                 class="bg-emerald-400 hover:bg-emerald-500 text-white w-full mt-2.5 rounded-[5px] p-2">
@@ -102,17 +103,16 @@
         <div class="plan relative">
             <div
                 class="bg-[url('/images/rommplaan.png')] bg-cover bg-center h-[90%] w-[90%] border-4 border-[#1C3A4D] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-22 grid-rows-8 gap-0">
-                <div class="bg-red-500 col-start-1 col-end-9 row-start-1 row-end-4" id="conferenceroom">Div1</div>
-                <div class="bg-green-500 col-start-1 col-end-9 row-start-4 row-end-9 " id="reception">Div2</div>
-                <div class="bg-blue-500 col-start-12 col-end-18 row-start-1 row-end-4 " id="archivesroom">Div3</div>
-                <div class="bg-yellow-500 col-start-18 col-end-23 row-start-1 row-end-4" id="securityroom">Div4</div>
-                <div class="bg-purple-500 col-start-12 col-end-18 row-start-6 row-end-9" id="staffroom">Div5</div>
-                <div class="bg-pink-500 col-start-18 col-end-23 row-start-6 row-end-9" id="serverroom">Div6</div>
+                <div class="bg-red-500/50 col-start-1 col-end-9 row-start-1 row-end-4" id="conferenceroom">CONFERENCE ROOM</div>
+                <div class="bg-green-500/50 col-start-1 col-end-9 row-start-4 row-end-9 " id="reception">RECEPTION</div>
+                <div class="bg-blue-500/50 col-start-12 col-end-18 row-start-1 row-end-4 " id="archivesroom">ARCHIVES ROOM</div>
+                <div class="bg-yellow-500/50 col-start-18 col-end-23 row-start-1 row-end-4" id="securityroom">SECURITY ROOM</div>
+                <div class="bg-purple-500/50 col-start-12 col-end-18 row-start-6 row-end-9" id="staffroom">STAFF ROOM</div>
+                <div class="bg-pink-500/50 col-start-18 col-end-23 row-start-6 row-end-9" id="serverroom">SERVER ROOM</div>
             </div>
         </div>
 
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>

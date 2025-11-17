@@ -763,6 +763,12 @@
   .bg-blue-500 {
     background-color: var(--color-blue-500);
   }
+  .bg-blue-500\/50 {
+    background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-blue-500) 50%, transparent);
+    }
+  }
   .bg-emerald-400 {
     background-color: var(--color-emerald-400);
   }
@@ -772,14 +778,32 @@
   .bg-green-500 {
     background-color: var(--color-green-500);
   }
+  .bg-green-500\/50 {
+    background-color: color-mix(in srgb, oklch(72.3% 0.219 149.579) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-green-500) 50%, transparent);
+    }
+  }
   .bg-green-800 {
     background-color: var(--color-green-800);
   }
   .bg-pink-500 {
     background-color: var(--color-pink-500);
   }
+  .bg-pink-500\/50 {
+    background-color: color-mix(in srgb, oklch(65.6% 0.241 354.308) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-pink-500) 50%, transparent);
+    }
+  }
   .bg-purple-500 {
     background-color: var(--color-purple-500);
+  }
+  .bg-purple-500\/50 {
+    background-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-purple-500) 50%, transparent);
+    }
   }
   .bg-red-300 {
     background-color: var(--color-red-300);
@@ -789,6 +813,12 @@
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
+  }
+  .bg-red-500\/50 {
+    background-color: color-mix(in srgb, oklch(63.7% 0.237 25.331) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-red-500) 50%, transparent);
+    }
   }
   .bg-slate-50 {
     background-color: var(--color-slate-50);
@@ -804,6 +834,12 @@
   }
   .bg-yellow-500 {
     background-color: var(--color-yellow-500);
+  }
+  .bg-yellow-500\/50 {
+    background-color: color-mix(in srgb, oklch(79.5% 0.184 86.047) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-yellow-500) 50%, transparent);
+    }
   }
   .bg-\[url\(\'\/images\/rommplaan\.png\'\)\] {
     background-image: url('/images/rommplaan.png');
