@@ -55,7 +55,7 @@ addexperiencebtn.addEventListener("click", (e) => {
   );
 });
 
-// display employees in the side bar
+//display employees in the side bar
 const emp = [
   {
     id: 1,
@@ -65,7 +65,7 @@ const emp = [
   },
   {
     id: 1,
-    name: "Amine potter",
+    name: "Harry Potter",
     image: "./images/profiles/harry.webp",
     role: "Manager",
   },
@@ -105,7 +105,6 @@ const nameregex = /^[A-Za-z]{2,}$/;
     const company = allinputs[1];
     const startdate = allinputs[2];
     const enddate = allinputs[3];
-    
     
 
   });
