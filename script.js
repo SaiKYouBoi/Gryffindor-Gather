@@ -3,8 +3,11 @@ const employeeimage = document.getElementById("employeeimage");
 
 urlinput.addEventListener("change", () => {
   let url = urlinput.value;
-
-  employeeimage.src = url;
+  if(!url){
+      employeeimage.src = "./images/anonymous-user.webp"
+  }else{
+     employeeimage.src = url;
+  }
 });
 
 const addemployee = document.getElementById("addemployee");
@@ -14,6 +17,7 @@ const experiencesform = document.getElementById("experiences");
 const addexperiencebtn = document.querySelector(".addexperience");
 const Employeeform = document.getElementById("Employeeform");
 const employees = document.getElementById("employees");
+const modal = document.querySelector(".modal")
 
 addemployee.addEventListener("click", () => {
   addemployeemodal.classList.remove("hidden");
@@ -21,8 +25,13 @@ addemployee.addEventListener("click", () => {
 
 cancel.addEventListener("click", (e) => {
   e.preventDefault();
-
   addemployeemodal.classList.add("hidden");
+  const allexpforms = experiencesform.querySelectorAll(".expform");
+  allexpforms.forEach((exp,index)=>{
+    if(index>0){
+      exp.remove()
+    }
+  })
   Employeeform.reset();
 });
 
@@ -35,10 +44,12 @@ addexperiencebtn.addEventListener("click", (e) => {
 <div class="expform border border-gray-400 rounded-[11px] p-4 mt-2.5">
                             <input class="border-gray-300  rounded-md mb-2 border-2 w-full h-[42px] py-2 px-3"
                                 name="jobtitle" type="text" placeholder="Job Title">
+                            <p class="error text-red-400 text-[12px] w-full hidden" id="nameerror">Job title must be at least 6 characters.</p>
                             <input class="border-gray-300  rounded-md mb-2 mt-2.5 border-2 w-full h-[42px] py-2 px-3"
                                 name="Company / Organization" type="text" placeholder="Company / Organization">
+                            <p class="error text-red-400 text-[12px] w-full hidden" id="nameerror">Only letters, numbers, spaces, .-'& allowed.</p>
 
-                            <div class="flex gap-1.5 mt-2.5">
+                            <div class="flex flex-col xl:flex-row gap-1.5 mt-2.5">
                                 <div><label class="block mb-1" for="Sdate">Start Date</label>
                                     <input class="border-gray-300  rounded-md mb-2 border-2 w-full h-[38px] py-2 px-3"
                                         name="phone" type="date">
@@ -50,6 +61,8 @@ addexperiencebtn.addEventListener("click", (e) => {
                             </div>
                             <textarea class="border-gray-300 rounded-md mt-2.5 border-2 w-full py-2 px-3" rows="2"
                                 name="Description" id="Description" placeholder="Description"></textarea>
+                                <p class="error text-red-400 text-[12px] w-full hidden" id="nameerror">Only letters, numbers, spaces, .-'& allowed.</p>
+                            
                         </div>
 `
   );
@@ -86,26 +99,93 @@ function displayemployees(infos) {
     `;
   });
 }
-    
+
 displayemployees(emp);
 
-const allexpforms = document.querySelectorAll(".expform")
-
-Employeeform.addEventListener("input", () => {
+function validate(input, regex) {
+  const errorm = input?.nextElementSibling;
   
-const nameregex = /^[A-Za-z]{2,}$/;
-  const emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneregex = /^(?:\+212|0)(6|7)[0-9]{8}$/;
+  if (errorm) {
+    if (!regex.test(input.value.trim()) && input.value) {
+    input.classList.add("border-red-500");
+    errorm.classList.remove("hidden");
+    errorm.classList.add("fade-in");
 
-  allexpforms.forEach((exp) => {
-    const allinputs = exp.querySelectorAll("input");
-    const exptextarea = exp.querySelectorAll("textarea");
+    return false;
+  } else {
+    input.classList.remove("border-red-500");
+    errorm.classList.add("hidden");
+    errorm.classList.remove("fade-in");
+    return true;
+  }
+  }
+}
 
-    const jobtitle = allinputs[0];
-    const company = allinputs[1];
-    const startdate = allinputs[2];
-    const enddate = allinputs[3];
+function validateEmployyeform(){
+
+  const name = modal.querySelector("input[name]")
+  const email = modal.querySelector("input[email]")
+  const phone = modal.querySelector("input[phone]")
+
+  allValid = true
+
+  const nameregex = /^[A-Za-z]{6,}$/;
+  const emailregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+  const phoneregex = /^(?:\+212|0)(6|7)[0-9]{8}$/;  
+
+  const validname = validate(name ,nameregex)
+
+  const validemail = validate(email ,emailregex)
+
+  const validphone = validate(phone ,phoneregex)
+
+  if(!validname || validemail || validphone){
+    allValid = false;
+  }
+
+  allValid = true;
+}
+
+// Event for typing in form
+Employeeform.addEventListener("input", () => {
+ 
+  validateEmployyeform()
+}); 
+
+function validateallexp() {
+const allexpforms = experiencesform.querySelectorAll(".expform");
     
+let allValid = true;
 
-  });
-});
+
+    
+    const jobregex = /^[A-Za-z]{2,}$/;
+    const companyregex = /^[A-Za-z .&'-]{2,14}$/;
+    const descregex = /^\s*\S.+$/;
+
+    allexpforms.forEach((exp) => {
+      const allinputs = exp.querySelectorAll("input");
+      const exptextarea = exp.querySelectorAll("textarea");
+
+      const jobtitle = allinputs[0];
+      const company = allinputs[1];
+      const startdate = allinputs[2];
+      const enddate = allinputs[3];
+
+      const validjobtitle = validate(jobtitle, jobregex);
+
+      const validcompany = validate(company, companyregex);
+
+      if (!validjobtitle || !validcompany) {
+        allValid = false;
+      }
+    });
+
+    return allValid;
+  }
+
+// Event for typing in form specif to experiences
+experiencesform.addEventListener("input", () => {
+
+  validateallexp()
+}); 
