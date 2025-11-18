@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gryffindor Gather</title>
     <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="bg-[#FBF9EF] m-0 p-0 ">
@@ -66,7 +67,7 @@
                         <label class="block mb-1 mt-3.5" for="role">Role</label>
                         <select class="border-gray-300  rounded-md mb-2 border-2 w-full h-[38px] py-2 px-3" name="roles"
                             id="roles"> 
-                            <option value="" disabled selected>Select a role</option>
+                            <option value="">Select a role</option>
                             <option value="receptionist">Receptionist</option>
                             <option value="technician">IT Technician</option>
                             <option value="securityagent">Security Agent</option>
@@ -74,6 +75,7 @@
                             <option value="cleaningstaff">Cleaning Staff</option>
                             <option value="other">Other</option>
                         </select>
+                        <p class="error text-red-400 text-[12px] w-full hidden" id="nameerror">Please select a role.</p>
 
                         <label class="block mb-1 mt-3.5" for="url">Photo URL</label>
                         <input class="border-gray-300  rounded-md mb-2 border-2 w-full h-[38px] py-2 px-3" name="url"
@@ -137,8 +139,13 @@
         <div class="plan relative">
             <div
                 class="bg-[url('./images/rommplaan.png')] bg-cover bg-no-repeat bg-center h-[95%] xl:w-[90%] w-[96%] border-4 border-[#1C3A4D] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-22 grid-rows-8 gap-0">
-                <div class="bg-red-500/20 col-start-1 col-end-9 row-start-1 row-end-4" id="conferenceroom">CONFERENCE ROOM</div>
-                <div class="bg-green-500/20 col-start-1 col-end-9 row-start-4 row-end-9 " id="reception">RECEPTION</div>
+                <div class=" col-start-1 col-end-9 row-start-1 row-end-4" id="conferenceroom">
+                    <button class="absolute top-52 left-43 border-7 border-[#EDEDED] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors hover:bg-[#4EB097]/90 bg-[#59C3A7]/90 flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
+                </div>
+                
+                <div class="col-start-1 col-end-9 row-start-4 row-end-9 " id="reception">
+                    <button class="absolute top-52 left-171 border-7 border-[#EDEDED] outline-[1px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors hover:bg-[#C6534C]/90 bg-[#D95F58]/90 flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
+                </div>
                 <div class="bg-blue-500/20 col-start-12 col-end-18 row-start-1 row-end-4 " id="archivesroom">ARCHIVES ROOM</div>
                 <div class="bg-yellow-500/20 col-start-18 col-end-23 row-start-1 row-end-4" id="securityroom">SECURITY ROOM</div>
                 <div class="bg-purple-500/20 col-start-12 col-end-18 row-start-6 row-end-9" id="staffroom">STAFF ROOM</div>

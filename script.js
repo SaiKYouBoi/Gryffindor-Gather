@@ -1,12 +1,25 @@
+const KEY = "Gryffindor_Gather";
+
+let employeesarr = load();
+
+function save(object) {
+  employeesarr.push(object);
+  localStorage.setItem(KEY, JSON.stringify(employeesarr));
+}
+
+function load() {
+  return JSON.parse(localStorage.getItem(KEY) || "[]");
+}
+
 const urlinput = document.querySelector("input[name=url]");
 const employeeimage = document.getElementById("employeeimage");
 
 urlinput.addEventListener("input", () => {
   let url = urlinput.value;
-  if(!url){
-      employeeimage.src = "./images/anonymous-user.webp"
-  }else{
-     employeeimage.src = url;
+  if (!url) {
+    employeeimage.src = "./images/anonymous-user.webp";
+  } else {
+    employeeimage.src = url;
   }
 });
 
@@ -17,8 +30,7 @@ const experiencesform = document.getElementById("experiences");
 const addexperiencebtn = document.querySelector(".addexperience");
 const Employeeform = document.getElementById("Employeeform");
 const employees = document.getElementById("employees");
-const modal = document.querySelector(".modal")
-
+const modal = document.querySelector(".modal");
 
 addemployee.addEventListener("click", () => {
   addemployeemodal.classList.remove("hidden");
@@ -27,15 +39,19 @@ addemployee.addEventListener("click", () => {
 // Closing modal
 cancel.addEventListener("click", (e) => {
   e.preventDefault();
+  clearfomr();
+});
+
+function clearfomr() {
   addemployeemodal.classList.add("hidden");
   const allexpforms = experiencesform.querySelectorAll(".expform");
-  allexpforms.forEach((exp,index)=>{
-    if(index>0){
-      exp.remove()
+  allexpforms.forEach((exp, index) => {
+    if (index > 0) {
+      exp.remove();
     }
-  })
+  });
   Employeeform.reset();
-});
+}
 
 addexperiencebtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -70,29 +86,14 @@ addexperiencebtn.addEventListener("click", (e) => {
   );
 });
 
-//display employees in the side bar
-const emp = [
-  {
-    id: 1,
-    name: "Harry Potter",
-    image: "./images/profiles/harry.webp",
-    role: "Manager",
-  },
-  {
-    id: 1,
-    name: "Harry Potter",
-    image: "./images/profiles/harry.webp",
-    role: "Manager",
-  },
-];
 
 function displayemployees(infos) {
   employees.innerHTML = "";
-
-  infos.forEach((emp) => {
+  let filtreddata = infos.filter(e => e.status === "unsigned")
+  filtreddata.forEach((emp) => {
     employees.innerHTML += `
     <div class="employee flex items-center gap-4.5 w-full h-16 mt-3 border-l-4 border-[#2A0404] rounded-[5px] shadow-md hover:shadow-lg transition duration-300 hover:ease-in hover:scale-102 p-3 cursor-pointer">
-                        <img class="w-12 h-12 rounded-[50%] object-cover" src="${emp.image}" alt="profile-image">
+                        <img class="w-12 h-12 rounded-[50%] object-cover" src="${emp.url}" alt="profile-image">
                         <div class="nameandrole flex flex-col gap-0.5">
                             <h1 class="text-[16px] font-medium">${emp.name}</h1>
                             <p class="text-[12px] text-gray-400 font-light">${emp.role}</p>
@@ -102,100 +103,97 @@ function displayemployees(infos) {
   });
 }
 
-displayemployees(emp);
+//display employees in the side bar
+displayemployees(employeesarr);
+
 
 
 // validate inputs
 function validate(input, regex) {
-  
   const errorm = input?.nextElementSibling;
 
   if (errorm) {
     if (!regex.test(input.value.trim()) && input.value) {
-    input.classList.add("border-red-500");
-    errorm.classList.remove("hidden");
-    errorm.classList.add("fade-in");
-
-    return false;
-  } else {
-    input.classList.remove("border-red-500");
-    errorm.classList.add("hidden");
-    errorm.classList.remove("fade-in");
-    return true;
-  }
+      input.classList.add("border-red-500");
+      errorm.classList.remove("hidden");
+      errorm.classList.add("fade-in");
+      return false;
+    } else {
+      input.classList.remove("border-red-500");
+      errorm.classList.add("hidden");
+      errorm.classList.remove("fade-in");
+      return true;
+    }
   }
 }
 
-function validateEmployyeform(){
-  const name = modal.querySelector("input[name]")
-  const email = modal.querySelector("input[name=email]")
-  const phone = modal.querySelector("input[name=phone]")
-  
-  allValid = true
+function validateEmployyeform() {
+  const name = modal.querySelector("input[name]");
+  const email = modal.querySelector("input[name=email]");
+  const phone = modal.querySelector("input[name=phone]");
+
+  allValid = true;
 
   const nameregex = /^[A-Za-z]{6,}$/;
   const emailregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const phoneregex = /^(?:\+212|0)(6|7)[0-9]{8}$/;  
+  const phoneregex = /^(?:\+212|0)(6|7)[0-9]{8}$/;
 
-  const validname = validate(name ,nameregex)
+  const validname = validate(name, nameregex);
 
-  const validemail = validate(email ,emailregex)
+  const validemail = validate(email, emailregex);
 
-  const validphone = validate(phone ,phoneregex)
+  const validphone = validate(phone, phoneregex);
 
-  if(!validname || validemail || validphone){
+  if (!validname || !validemail || !validphone) {
     allValid = false;
   }
-  allValid = true;
+
+  return allValid;
 }
 
 function validateallexp() {
-const allexpforms = experiencesform.querySelectorAll(".expform");
-    
-let allValid = true;
+  const allexpforms = experiencesform.querySelectorAll(".expform");
 
-    const jobregex = /^[A-Za-z]{2,}$/;
-    const companyregex = /^[A-Za-z .&'-]{2,14}$/;
-    const descregex = /^\s*\S.+$/;
+  let allValid = true;
 
-    allexpforms.forEach((exp) => {
-      const allinputs = exp.querySelectorAll("input");
-      const exptextarea = exp.querySelector("textarea");
+  const jobregex = /^[A-Za-z]{2,}$/;
+  const companyregex = /^[A-Za-z .&'-]{2,14}$/;
+  const descregex = /^\s*\S.+$/;
 
-      const jobtitle = allinputs[0];
-      const company = allinputs[1];
-      const startdate = allinputs[2];
-      const enddate = allinputs[3];
+  allexpforms.forEach((exp) => {
+    const allinputs = exp.querySelectorAll("input");
+    const exptextarea = exp.querySelector("textarea");
 
-      const validjobtitle = validate(jobtitle, jobregex);
+    const jobtitle = allinputs[0];
+    const company = allinputs[1];
+    const startdate = allinputs[2];
+    const enddate = allinputs[3];
 
-      const validcompany = validate(company, companyregex);
+    const validjobtitle = validate(jobtitle, jobregex);
 
-      const validdescrp = validate(exptextarea, descregex);
+    const validcompany = validate(company, companyregex);
 
-      if (!validjobtitle || !validcompany || !validdescrp) {
-        allValid = false;
-      }
-    });
+    const validdescrp = validate(exptextarea, descregex);
 
-    return allValid;
-  }
+    if (!validjobtitle || !validcompany || !validdescrp) {
+      allValid = false;
+    }
+  });
+
+  return allValid;
+}
 
 // Event for typing in form and exp
 Employeeform.addEventListener("input", () => {
-  validateallexp()
-  validateEmployyeform()
-}); 
- 
+  validateallexp();
+  validateEmployyeform();
+});
+
 // Event for the submit button
 Employeeform.addEventListener("submit", (e) => {
   e.preventDefault();
-  const roleselect = modal.querySelector("select[name=roles]")
-    
-  if (!roleselect.value) {
-    alert("Please select a role.");
-    return;
-  }
+
+  console.log(validateEmployyeform());
 
   if (!validateallexp()) {
     alert("Please fix the highlighted fields.");
@@ -206,4 +204,54 @@ Employeeform.addEventListener("submit", (e) => {
     alert("Please fix the highlighted fields.");
     return;
   }
-}); 
+
+  const employeeinfos = collectingformdata();
+  save(employeeinfos);
+  clearfomr();
+  displayemployees(employeesarr);
+});
+
+function getallexpdata() {
+  const allexpforms = experiencesform.querySelectorAll(".expform");
+  const expData = [];
+
+  allexpforms.forEach((exp) => {
+    const allinputs = exp.querySelectorAll("input");
+    const exptextarea = exp.querySelector("textarea");
+
+    const data = {
+      title: allinputs[0]?.value || "",
+      company: allinputs[1]?.value || "",
+      startdate: allinputs[2]?.value || "",
+      enddate: allinputs[3]?.value || "",
+      description: exptextarea?.value || "",
+    };
+
+    expData.push(data);
+  });
+
+  return expData;
+}
+
+function collectingformdata() {
+  const name = modal.querySelector("input[name]");
+  const email = modal.querySelector("input[name=email]");
+  const phone = modal.querySelector("input[name=phone]");
+  const urlinput = document.querySelector("input[name=url]");
+  const role = modal.querySelector("select[name=roles]");
+
+  const formexperiences = getallexpdata();
+
+  const employeee = {
+    id: "EM-" + Date.now(),
+    name: name.value,
+    role: role.value,
+    url: urlinput.value || "./images/anonymous-user.webp",
+    email: email.value,
+    phone: phone.value,
+    experiences: formexperiences,
+    status: "unsigned",
+  };
+
+  return employeee;
+}
