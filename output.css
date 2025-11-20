@@ -471,6 +471,15 @@
   .h-\[95vh\] {
     height: 95vh;
   }
+  .h-\[200px\] {
+    height: 200px;
+  }
+  .h-\[230px\] {
+    height: 230px;
+  }
+  .h-\[240px\] {
+    height: 240px;
+  }
   .h-\[500px\] {
     height: 500px;
   }
@@ -672,6 +681,9 @@
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .overflow-scroll {
+    overflow: scroll;
   }
   .overflow-x-hidden {
     overflow-x: hidden;
@@ -933,6 +945,9 @@
   .text-center {
     text-align: center;
   }
+  .text-justify {
+    text-align: justify;
+  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
@@ -949,6 +964,9 @@
   }
   .text-\[12px\] {
     font-size: 12px;
+  }
+  .text-\[13px\] {
+    font-size: 13px;
   }
   .text-\[14px\] {
     font-size: 14px;

@@ -14,9 +14,9 @@
 <body>
     <div class="fixed top-0 left-0 w-screen h-screen bg-[rgba(20,20,20,0.90)] z-999" id="addemployeprofile">
         <div
-            class="profilemodal w-[95%] xl:w-[35%] h-[95vh] bg-white rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 flex flex-col">
+            class="profilemodal w-[95%] xl:w-[35%] h-[95vh] bg-white rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 flex flex-col overflow-hidden">
             <div class="bg-[url('./images/cover.png')] w-full h-36 rounded-2xl relative">
-                <img class="absolute top-21 left-8 w-30 h-30 object-cover border-8 border-white rounded-[50%]"
+                <img class="absolute top-19 left-8 w-30 h-30 object-cover border-8 border-white rounded-[50%]"
                     src="./images/profiles/harry.webp" alt="profilepic">
             </div>
             <div class="pl-0 mt-11 h-10 border-b border-gray-300">
@@ -25,7 +25,6 @@
                     <p class="">Profile</p>
                 </div>
             </div>
-
             <div class="flex gap-15">
                 <div class="flex flex-col gap-2.5 mt-4">
                     <p>Full name:</p>
@@ -45,38 +44,43 @@
                     <i class="fa-solid fa-briefcase"></i>
                     <p class="">Expreinces</p>
                 </div>
-                <div class="border-gray-400 w-full p-3 border rounded-2xl mt-4">
-                    <div class="flex justify-between">
-                        <div class="w-[50%]">
-                            <div class="flex gap-10">
-                                <div class="flex flex-col gap-2.5">
-                                    <p>Job title:</p>
-                                    <p>Start date:</p>
-                                </div>
-                                <div class="flex flex-col gap-3">
-                                    <p class="text-gray-500 text-[15px]">Student</p>
-                                    <p class="text-gray-500 text-[15px]">11/10/2025</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-[50%]">
-                            <div class="flex gap-10">
-                                <div class="flex flex-col gap-2.5">
-                                    <p>Company:</p>
-                                    <p>End date:</p>
-                                </div>
-                                <div class="flex flex-col gap-3">
-                                    <p class="text-gray-500 text-[15px]">Youcode</p>
-                                    <p class="text-gray-500 text-[15px]">11/12/2025</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mt-2 mb-2">Description:</p>
-                    <div class="border border-gray-400 p-1.5 rounded-[5px] h-18">
-                        <p class="text-gray-500 text-[11px]">somthing</p>
-                    </div>
 
+                <div class="h-[230px] overflow-y-scroll [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-gray-400
+            [&::-webkit-scrollbar-thumb]:rounded-full p-2 overflow-hidden">
+                    <div class="border-gray-400 w-full p-3 border rounded-2xl mt-2">
+                        <div class="flex justify-between">
+                            <div class="w-[50%]">
+                                <div class="flex gap-10">
+                                    <div class="flex flex-col gap-2.5">
+                                        <p>Job title:</p>
+                                        <p>Start date:</p>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <p class="text-gray-500 text-[15px]">Student</p>
+                                        <p class="text-gray-500 text-[15px]">11/10/2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-[50%]">
+                                <div class="flex gap-10">
+                                    <div class="flex flex-col gap-2.5">
+                                        <p>Company:</p>
+                                        <p>End date:</p>
+                                    </div>
+                                    <div class="flex flex-col gap-3">
+                                        <p class="text-gray-500 text-[15px]">Youcode</p>
+                                        <p class="text-gray-500 text-[15px]">11/12/2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-2 mb-2">Description:</p>
+                        <div class="">
+                            <p class="text-gray-500 text-justify text-[14px]">Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Dolorem, optio labore. Itaque deleniti error accusantium deserunt non
+                                nisi, nesciunt voluptas.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

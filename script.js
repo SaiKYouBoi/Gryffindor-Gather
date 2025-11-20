@@ -11,6 +11,8 @@ function load() {
   return JSON.parse(localStorage.getItem(KEY) || "[]");
 }
 
+// the event for the url image
+
 const urlinput = document.querySelector("input[name=url]");
 const employeeimage = document.getElementById("employeeimage");
 urlinput.addEventListener("input", () => {
@@ -30,7 +32,6 @@ const addexperiencebtn = document.querySelector(".addexperience");
 const Employeeform = document.getElementById("Employeeform");
 const employees = document.getElementById("employees");
 const modal = document.querySelector(".modal");
-
 
 addemployee.addEventListener("click", () => {
   addemployeemodal.classList.remove("hidden");
@@ -55,7 +56,6 @@ function clearfomr() {
 }
 
 //the ecvent for adding exprience form
-
 addexperiencebtn.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -75,10 +75,12 @@ addexperiencebtn.addEventListener("click", (e) => {
                                 <div><label class="block mb-1" for="Sdate">Start Date</label>
                                     <input class="border-gray-300  rounded-md mb-2 border-2 w-full h-[38px] py-2 px-3"
                                         name="phone" type="date">
+                                    <p class="text-red-400 text-[12px] w-full hidden">  Start date cannot be in the future. Please select today or an earlier date.</p>
                                 </div>
                                 <div><label class="block mb-1 " for="Edate">End Date</label>
                                     <input class="border-gray-300  rounded-md mb-2 border-2 w-full h-[38px] py-2 px-3"
                                         name="phone" type="date">
+                                        <p class="text-red-400 text-[12px] w-full hidden">End date cannot be before the start date.</p>
                                 </div>
                             </div>
                             <textarea class="border-gray-300 rounded-md mt-2.5 border-2 w-full py-2 px-3" rows="2"
@@ -99,13 +101,12 @@ experiencesform.addEventListener("click", (e) => {
 });
 
 //fucntion for displaying employees in the side bar
-
 function displayemployees(infos) {
   employees.innerHTML = "";
   let filtreddata = infos.filter(e => e.status === "unsigned")
   filtreddata.forEach((emp) => {
     employees.innerHTML += `
-    <div onclick="displayinfos('${emp.id}')" class="employee flex items-center gap-4.5 w-full h-16 mt-3 border-l-4 border-[#2A0404] rounded-[5px] shadow-md hover:shadow-lg transition duration-300 hover:ease-in hover:scale-102 p-3 cursor-pointer">
+    <div onclick="empdetails('${emp.id}')" class="employee flex items-center gap-4.5 w-full h-16 mt-3 border-l-4 border-[#2A0404] rounded-[5px] shadow-md hover:shadow-lg transition duration-300 hover:ease-in hover:scale-102 p-3 cursor-pointer">
                         <img class="w-12 h-12 rounded-[50%] object-cover" src="${emp.url}" alt="profile-image">
                         <div class="nameandrole flex flex-col gap-0.5">
                             <h1 class="text-[16px] font-medium">${emp.name}</h1>
@@ -121,14 +122,91 @@ displayemployees(employeesarr);
 
 // //display emplyee profile
 
-// displayinfos(){
-// const profilemodal = createElement('div')
+const profilemodal = document.querySelector(".profilemodal")
+const addemployeprofile = document.getElementById("addemployeprofile")
 
-// profilemodal.innerHTML += `
+function empdetails(empid){
+let wantedemp = employeesarr.find(emp => emp.id === empid)
+
+addemployeprofile.classList.remove("hidden")
 
 
-// `
-// }
+profilemodal.innerHTML = `
+  <div class="bg-[url('./images/cover.png')] w-full h-36 rounded-2xl relative">
+                <img class="absolute top-19 left-8 w-30 h-30 object-cover border-8 border-white rounded-[50%]"
+                    src="${wantedemp.url}" alt="profilepic">
+            </div>
+            <div class="pl-0 mt-11 h-10 border-b border-gray-300">
+                <div class="flex gap-1 items-center border-b border-black-300 w-19 h-10">
+                    <i class="fa-regular fa-user"></i>
+                    <p class="">Profile</p>
+                </div>
+            </div>
+
+            <div class="flex gap-15">
+                <div class="flex flex-col gap-2.5 mt-4">
+                    <p>Full name:</p>
+                    <p>Role:</p>
+                    <p>Email:</p>
+                    <p>Phone:</p>
+                </div>
+                <div class="flex flex-col gap-3 mt-4">
+                    <p class="text-gray-500 text-[15px]">${wantedemp.name}</p>
+                    <p class="text-gray-500 text-[15px]">${wantedemp.role}</p>
+                    <p class="text-gray-500 text-[15px]">${wantedemp.email}</p>
+                    <p class="text-gray-500 text-[15px]">${wantedemp.phone}</p>
+                </div>
+            </div>
+            <div class="pl-0 mt-2 h-10 border-b border-gray-300">
+                <div class="flex gap-1.5 items-center border-b border-black-300 w-27 h-10">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <p class="">Expreinces</p>
+                </div>
+                <div class="h-[230px] overflow-y-scroll [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-gray-400
+            [&::-webkit-scrollbar-thumb]:rounded-full p-2 overflow-hidden">
+                ${
+                  wantedemp.experiences.map(exp => `
+                          
+                <div class="border-gray-400 w-full p-3 border rounded-2xl mt-2">
+                    <div class="flex justify-between">
+                        <div class="w-[50%]">
+                            <div class="flex gap-10">
+                                <div class="flex flex-col gap-2.5">
+                                    <p>Job title:</p>
+                                    <p>Start date:</p>
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <p class="text-gray-500 text-[15px]">${exp.title}</p>
+                                    <p class="text-gray-500 text-[15px]">${exp.startdate}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-[50%]">
+                            <div class="flex gap-10">
+                                <div class="flex flex-col gap-2.5">
+                                    <p>Company:</p>
+                                    <p>End date:</p>
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <p class="text-gray-500 text-[15px]">${exp.company}</p>
+                                    <p class="text-gray-500 text-[15px]">${exp.enddate}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-2 mb-2">Description:</p>
+                    <div class="">
+                        <p class="text-gray-500 text-justify text-[14px]">${exp.description}</p>
+                    </div>
+                </div>                 
+                    `).join("")
+                }
+                
+                </div>   
+            </div>
+`
+}
+
 
 // validate inputs
 function validate(input, regex, secondinput="") {
@@ -351,50 +429,53 @@ closeassingbtn.addEventListener("click",()=>{
 
 // conference room open asign modal
 conferenceroombtn.addEventListener("click",()=>{
+  let conferenceroomemps = employeesarr.filter(e => e.status === "unsigned")
   assignemployee.classList.remove("hidden")
-  roomfilter(employeesarr)
+  roomfilter(conferenceroomemps, "conferenceroom")
 })
 
 // reception room open asign modal
 receptionroombtn.addEventListener("click",()=>{
-  let receptionroomemps = employeesarr.filter(e => e.role === "receptionist" || e.role === "cleaningstaff" || e.role=== "manager")
+  let receptionroomemps = employeesarr.filter(e => (e.role === "receptionist" || e.role === "cleaningstaff" || e.role=== "manager") && e.status === "unsigned")
   assignemployee.classList.remove("hidden")
-  roomfilter(receptionroomemps)
+  roomfilter(receptionroomemps, "reception")
 })
 
 // archive room open asign modal
 archivesroombtn.addEventListener("click",()=>{
-  let archivesroomemps = employeesarr.filter(e => e.role !== "cleaningstaff")
+  let archivesroomemps = employeesarr.filter(e => e.role !== "cleaningstaff" && e.status === "unsigned")
   assignemployee.classList.remove("hidden")
-  roomfilter(archivesroomemps)
+  roomfilter(archivesroomemps, "archivesroom")
 })
 
 // security room open asign modal
 securityroombtn.addEventListener("click",()=>{
-  let securityroomemps = employeesarr.filter(e => e.role == "cleaningstaff" || e.role == "manager" || e.role == "securityagent")
+  let securityroomemps = employeesarr.filter(e => (e.role == "cleaningstaff" || e.role == "manager" || e.role == "securityagent") && e.status === "unsigned")
   assignemployee.classList.remove("hidden")
-  roomfilter(securityroomemps)
+  roomfilter(securityroomemps, "securityroom")
 })
 
 // staff room open asign modal
 staffroombtn.addEventListener("click",()=>{
+  let staffroomemps = employeesarr.filter(e => e.status === "unsigned")
   assignemployee.classList.remove("hidden")
-  roomfilter(employeesarr)
+  roomfilter(staffroomemps, "staffroom")
 })
 
 // server room open asign modal
 serverroombtn.addEventListener("click",()=>{
-  let serverroomemps = employeesarr.filter(e => e.role == "cleaningstaff" || e.role == "manager" || e.role == "technician")
+  let serverroomemps = employeesarr.filter(e => (e.role == "cleaningstaff" || e.role == "manager" || e.role == "technician") && e.status === "unsigned")
   assignemployee.classList.remove("hidden")
-  roomfilter(serverroomemps)
+  roomfilter(serverroomemps, "serverroom")
 })
 
-function roomfilter(roomarr){
+// fucntion that filters a room
+function roomfilter(roomarr, roomId){
   assingingemployees.innerHTML = "";
   // console.log(conferenceroomemps);
   roomarr.forEach((emp) => {
     assingingemployees.innerHTML += `
-    <div onclick="displayinfos('${emp.id}')" class="employee flex items-center gap-4.5 w-full h-16 mt-3 border-l-4 border-[#2A0404] rounded-[5px] shadow-md hover:shadow-lg transition duration-300 hover:ease-in hover:scale-102 p-3 cursor-pointer">
+    <div onclick="asignemp('${emp.id}','${roomId}')" class="employee flex items-center gap-4.5 w-full h-16 mt-3 border-l-4 border-[#2A0404] rounded-[5px] shadow-md hover:shadow-lg transition duration-300 hover:ease-in hover:scale-102 p-3 cursor-pointer">
                         <img class="w-12 h-12 rounded-[50%] object-cover" src="${emp.url}" alt="profile-image">
                         <div class="nameandrole flex flex-col gap-0.5">
                             <h1 class="text-[16px] font-medium">${emp.name}</h1>
@@ -403,3 +484,33 @@ function roomfilter(roomarr){
                     </div>
     `;})
 }
+
+//asinging to a room function
+function asignemp(empid, roomId){
+    let wantedemp = employeesarr.find(emp => emp.id === empid)
+    wantedemp.status = roomId
+    localStorage.setItem(KEY, JSON.stringify(employeesarr));
+    document.getElementById("closeassingbtn").click();
+    displayemployees(employeesarr);
+    displayemployeesinroom();
+}
+
+function displayemployeesinroom(){
+  let rooms = document.querySelectorAll(".room")
+
+  rooms.forEach(room =>{
+    let filtredemployees = employeesarr.filter(emp => emp.status === room.id)
+    filtredemployees.forEach(emp => {
+      room.insertAdjacentHTML("beforeend", `
+      <div onclick="empdetails('${emp.id}')" class="employee flex items-center gap-4.5 w-full h-16 mt-3 border-l-4 border-[#2A0404] rounded-[5px] shadow-md hover:shadow-lg transition duration-300 hover:ease-in hover:scale-102 p-3 cursor-pointer">
+                          <img class="w-12 h-12 rounded-[50%] object-cover" src="${emp.url}" alt="profile-image">
+                          <div class="nameandrole flex flex-col gap-0.5">
+                              <h1 class="text-[16px] font-medium">${emp.name}</h1>
+                              <p class="text-[12px] text-gray-400 font-light">${emp.role}</p>
+                          </div>
+                      </div>
+      `)
+    })
+  })
+}
+displayemployeesinroom();
