@@ -13,7 +13,7 @@
 <body class="bg-[#E1AB41] m-0 p-0 ">
     <div class="grid grid-cols-[1fr_4fr] w-full h-screen">
 
-        <div class="shadow-[2px_0_10px_-2px_rgba(0,0,0,0.12)] w-full h-screen bg-[#F9E8C8] p-2 pt-0">
+        <div class="shadow-[2px_0_25px_-4px_rgba(0,0,0,0.22)] w-full h-screen bg-[#F9E8C8] p-2 pt-0">
             <div class="logo h-auto border-b-[1.5px] border-gray-300 p-2.5">
                 <img class="w-[70%] m-auto h-auto" src="./images/logoimage.png" alt="Gryffindor Gather log">
             </div>
@@ -82,8 +82,8 @@
                         <label class="block mb-1 mt-3.5" for="url">Photo URL</label>
                         <input class="border-[#3C1A09]  rounded-md mb-2 border-2 w-full h-[38px] py-2 px-3" name="url"
                             type="text" placeholder="Enter the url of the photo">
-                        <img class="h-25 w-25 object-cover border-[#3C1A09]  border-2 border-dashed"
-                            src="./images/anonymous-user.webp" alt="EmployeeImage" id="employeeimage">
+                        <img class="h-30 w-30 rounded-[50%] object-cover border-[#5B2B0A] border-4"
+                            src="./images/profiles/anonymoususer.png" alt="EmployeeImage" id="employeeimage">
 
                         <label class="block mb-1 mt-3.5" for="email">Email</label>
                         <input class="border-[#3C1A09]  rounded-md mb-2 border-2 w-full h-[38px] py-2 px-3" id="email" name="email"
@@ -144,19 +144,19 @@
             <div
                 class="bg-[url('./images/roommplaann.png')] bg-cover bg-no-repeat bg-center h-[95%] w-[90%] border-3 border-[#673B14] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid grid-cols-22 grid-rows-8 gap-0">
                 <div class="room  col-start-1 col-end-9 row-start-1 row-end-4 relative p-2 flex flex-wrap" id="conferenceroom">
-                    <button id="conferenceroombtn" class="absolute top-52 left-43 border-7 border-[#673b14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
+                    <button id="conferenceroombtn" class="absolute top-51 left-43 border-7 border-[#673b14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
                 </div>
                 
                 <div class="room col-start-1 col-end-9 row-start-4 row-end-9 p-2" id="reception">
-                    <button id="receptionroombtn" class="absolute top-105 left-91 border-7 border-[#673B14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
+                    <button id="receptionroombtn" class="absolute top-97 left-88 border-7 border-[#673B14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
                 </div>
 
                 <div class="room  col-start-12 col-end-18 row-start-1 row-end-4 p-2 pl-9 flex flex-wrap" id="archivesroom">
-                    <button id="archivesroombtn" class="absolute top-52 left-171 border-7 border-[#673b14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
+                    <button id="archivesroombtn" class="absolute top-51 left-171 border-7 border-[#673b14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
                 </div>
 
                 <div class="room  col-start-18 col-end-23 row-start-1 row-end-4 p-2 flex flex-wrap" id="securityroom">
-                    <button id="securityroombtn" class="absolute top-52 left-235 border-7 border-[#673b14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
+                    <button id="securityroombtn" class="absolute top-51 left-235 border-7 border-[#673b14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
                 </div>
                 
                 <div class="room col-start-12 col-end-18 row-start-6 row-end-9 p-2 pl-9 flex flex-wrap" id="staffroom">
@@ -165,7 +165,7 @@
                 
                 
                 <div class="room col-start-18 col-end-23 row-start-6 row-end-9 p-2 flex flex-wrap" id="serverroom">
-                    <button id="serverroombtn" class="absolute top-128 left-204 border-7 border-[#673b14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
+                    <button id="serverroombtn" class="absolute top-128 left-214 border-7 border-[#673b14] outline-[0.5px] outline-[#081E38]/15 w-17 h-17 rounded-[50%] transition-colors bg-[#C46021] hover:bg-[#D26D27] flex justify-center items-center"><i class="fa-solid fa-plus text-[25px] text-white"></i></button>
                 </div>
             </div>
         </div>

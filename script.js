@@ -18,7 +18,7 @@ const employeeimage = document.getElementById("employeeimage");
 urlinput.addEventListener("input", () => {
   let url = urlinput.value;
   if (!url) {
-    employeeimage.src = "./images/anonymous-user.webp";
+    employeeimage.src = "./images/profiles/anonymoususer.png";
   } else {
     employeeimage.src = url;
   }
@@ -353,8 +353,8 @@ Employeeform.addEventListener("submit", (e) => {
 
    let filled = true;
   const allinputsss = Employeeform.querySelectorAll("input")
-  allinputsss.forEach((input)=>{
-    if(input.value === ""){
+  allinputsss.forEach((input, i)=>{
+    if(input.value === "" && i!=1){
       filled = false;
     }
   });
@@ -409,7 +409,7 @@ function collectingformdata() {
     id: "EM-" + Date.now(),
     name: name.value,
     role: role.value,
-    url: urlinput.value || "./images/anonymous-user.webp",
+    url: urlinput.value || "./images/profiles/anonymoususer.png",
     email: email.value,
     phone: phone.value,
     experiences: formexperiences,
