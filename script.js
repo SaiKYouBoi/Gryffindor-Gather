@@ -494,9 +494,26 @@ function roomfilter(roomarr, roomId){
     `;})
 }
 
+const roomlimit = {
+  conferenceroom: 4,
+  reception: 3,
+  archivesroom: 2,
+  securityroom: 3,
+  staffroom: 6,
+  serverroom: 2
+};
+
 //asinging to a room function
 function asignemp(empid, roomId){
-    let wantedemp = employeesarr.find(emp => emp.id === empid)
+
+    let currentcount = employeesarr.filter(emp => emp.status === roomId).length;
+  
+   if (currentcount >= roomlimit[roomId]) {
+    alert("This room is full!");
+    return;
+  }
+  
+  let wantedemp = employeesarr.find(emp => emp.id === empid)
     wantedemp.status = roomId
     localStorage.setItem(KEY, JSON.stringify(employeesarr));
     document.getElementById("closeassingbtn").click();
