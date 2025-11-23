@@ -212,8 +212,17 @@
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
+  .top-10 {
+    top: calc(var(--spacing) * 10);
+  }
+  .top-11 {
+    top: calc(var(--spacing) * 11);
+  }
   .top-19 {
     top: calc(var(--spacing) * 19);
+  }
+  .top-40 {
+    top: calc(var(--spacing) * 40);
   }
   .top-\[32\%\] {
     top: 32%;
@@ -271,6 +280,9 @@
   }
   .left-\[86\%\] {
     left: 86%;
+  }
+  .left-px {
+    left: 1px;
   }
   .z-999 {
     z-index: 999;
@@ -371,9 +383,6 @@
   .table {
     display: table;
   }
-  .aspect-16\/10 {
-    aspect-ratio: 16/10;
-  }
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
@@ -419,6 +428,18 @@
   .h-screen {
     height: 100vh;
   }
+  .w-0 {
+    width: calc(var(--spacing) * 0);
+  }
+  .w-0\.5 {
+    width: calc(var(--spacing) * 0.5);
+  }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
@@ -434,11 +455,14 @@
   .w-30 {
     width: calc(var(--spacing) * 30);
   }
-  .w-\[28\%\] {
-    width: 28%;
+  .w-\[2px\] {
+    width: 2px;
   }
-  .w-\[35\%\] {
-    width: 35%;
+  .w-\[40\%\] {
+    width: 40%;
+  }
+  .w-\[45\%\] {
+    width: 45%;
   }
   .w-\[48\%\] {
     width: 48%;
@@ -455,8 +479,59 @@
   .w-screen {
     width: 100vw;
   }
+  .max-w-\[\%\] {
+    max-width: %;
+  }
+  .max-w-\[7\%\] {
+    max-width: 7%;
+  }
+  .max-w-\[45\%\] {
+    max-width: 45%;
+  }
+  .max-w-\[48\%\] {
+    max-width: 48%;
+  }
+  .max-w-\[50\%\] {
+    max-width: 50%;
+  }
+  .max-w-\[55\%\] {
+    max-width: 55%;
+  }
+  .max-w-\[56\%\] {
+    max-width: 56%;
+  }
+  .max-w-\[60\%\] {
+    max-width: 60%;
+  }
+  .max-w-\[65\%\] {
+    max-width: 65%;
+  }
+  .max-w-\[70\%\] {
+    max-width: 70%;
+  }
+  .max-w-\[78\%\] {
+    max-width: 78%;
+  }
+  .max-w-\[80\%\] {
+    max-width: 80%;
+  }
   .max-w-\[1080px\] {
     max-width: 1080px;
+  }
+  .min-w-\[45\%\] {
+    min-width: 45%;
+  }
+  .min-w-\[48\%\] {
+    min-width: 48%;
+  }
+  .min-w-\[49\%\] {
+    min-width: 49%;
+  }
+  .min-w-\[50\%\] {
+    min-width: 50%;
+  }
+  .min-w-\[60\%\] {
+    min-width: 60%;
   }
   .flex-1 {
     flex: 1;
@@ -480,8 +555,11 @@
     --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .scale-\[0\.75\] {
-    scale: 0.75;
+  .scale-100 {
+    --tw-scale-x: 100%;
+    --tw-scale-y: 100%;
+    --tw-scale-z: 100%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .rotate-90 {
     rotate: 90deg;
@@ -567,6 +645,9 @@
   .overflow-y-scroll {
     overflow-y: scroll;
   }
+  .rounded {
+    border-radius: 0.25rem;
+  }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
@@ -581,6 +662,9 @@
   }
   .rounded-\[50\%\] {
     border-radius: 50%;
+  }
+  .rounded-\[60\%\] {
+    border-radius: 60%;
   }
   .rounded-md {
     border-radius: var(--radius-md);
@@ -671,6 +755,9 @@
   .bg-\[rgba\(33\,21\,21\,0\.9\)\] {
     background-color: rgba(33,21,21,0.9);
   }
+  .bg-white {
+    background-color: var(--color-white);
+  }
   .bg-\[url\(\'\.\/images\/cover\.png\'\)\] {
     background-image: url('./images/cover.png');
   }
@@ -740,8 +827,14 @@
   .pl-6 {
     padding-left: calc(var(--spacing) * 6);
   }
+  .pl-8 {
+    padding-left: calc(var(--spacing) * 8);
+  }
   .pl-9 {
     padding-left: calc(var(--spacing) * 9);
+  }
+  .pl-10 {
+    padding-left: calc(var(--spacing) * 10);
   }
   .text-center {
     text-align: center;
@@ -915,26 +1008,6 @@
       }
     }
   }
-  .sm\:mt-2 {
-    @media (width >= 40rem) {
-      margin-top: calc(var(--spacing) * 2);
-    }
-  }
-  .sm\:mt-5 {
-    @media (width >= 40rem) {
-      margin-top: calc(var(--spacing) * 5);
-    }
-  }
-  .sm\:mt-8 {
-    @media (width >= 40rem) {
-      margin-top: calc(var(--spacing) * 8);
-    }
-  }
-  .sm\:mt-14 {
-    @media (width >= 40rem) {
-      margin-top: calc(var(--spacing) * 14);
-    }
-  }
   .sm\:scale-100 {
     @media (width >= 40rem) {
       --tw-scale-x: 100%;
@@ -948,19 +1021,14 @@
       rotate: 0deg;
     }
   }
+  .lg\:aspect-16\/10 {
+    @media (width >= 64rem) {
+      aspect-ratio: 16/10;
+    }
+  }
   .lg\:h-screen {
     @media (width >= 64rem) {
       height: 100vh;
-    }
-  }
-  .lg\:w-\[\%\] {
-    @media (width >= 64rem) {
-      width: %;
-    }
-  }
-  .lg\:w-\[4\%\] {
-    @media (width >= 64rem) {
-      width: 4%;
     }
   }
   .lg\:w-\[28\%\] {
@@ -973,16 +1041,6 @@
       width: 30%;
     }
   }
-  .lg\:w-\[35\%\] {
-    @media (width >= 64rem) {
-      width: 35%;
-    }
-  }
-  .lg\:w-\[40\%\] {
-    @media (width >= 64rem) {
-      width: 40%;
-    }
-  }
   .lg\:w-\[45\%\] {
     @media (width >= 64rem) {
       width: 45%;
@@ -991,6 +1049,11 @@
   .lg\:w-\[70\%\] {
     @media (width >= 64rem) {
       width: 70%;
+    }
+  }
+  .lg\:w-full {
+    @media (width >= 64rem) {
+      width: 100%;
     }
   }
   .lg\:grid-cols-\[1fr_4fr\] {
@@ -1036,6 +1099,21 @@ body {
   syntax: "*";
   inherits: false;
   initial-value: 0;
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
 }
 @property --tw-border-style {
   syntax: "*";
@@ -1120,21 +1198,6 @@ body {
   syntax: "*";
   inherits: false;
 }
-@property --tw-scale-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
 @property --tw-ease {
   syntax: "*";
   inherits: false;
@@ -1145,6 +1208,9 @@ body {
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
       --tw-border-style: solid;
       --tw-font-weight: initial;
       --tw-shadow: 0 0 #0000;
@@ -1163,9 +1229,6 @@ body {
       --tw-ring-offset-shadow: 0 0 #0000;
       --tw-outline-style: solid;
       --tw-duration: initial;
-      --tw-scale-x: 1;
-      --tw-scale-y: 1;
-      --tw-scale-z: 1;
       --tw-ease: initial;
     }
   }
