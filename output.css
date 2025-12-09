@@ -1001,6 +1001,9 @@
 body {
   font-family: "Special Elite", system-ui;
 }
+.plan {
+  width: 97%;
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;
